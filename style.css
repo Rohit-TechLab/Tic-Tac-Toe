@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #39FF14; 
+}
+
+body {
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    width: 100%;
+    height: 50px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(185deg, rgb(120, 149, 246), #4400ba);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 0 12px;    
+    font-size: 27px;
+}
+
+.nav-left {
+    width: 50%;
+    display: flex;
+    align-items: center;
+
+}
+
+.nav-left ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-left ul li {
+
+    display: flex;
+    justify-content: center;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    transition: 0.4s;
+
+}
+
+.nav-right {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-right li{
+    display: flex;
+    list-style-type: none;
+    color: antiquewhite;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#muteButton {
+    background: none;
+    border: none;
+    padding: 0;
+    display: contents;
+    
+}
+
+.gameContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: repeat(3, 11vw);
+    grid-template-columns: repeat(3, 11vw);
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #FF00FF; 
+    font-size: 8vw;
+    color: #39FF14; 
+}
+
+.box:hover {
+    background-color: #FF00FF; 
+    color: black; 
+    font-size: 8vw;
+    cursor: pointer;
+}
+
+.gameInfo {
+    padding: 0 34px;
+    color: #39FF14; 
+    font-size: 13px;
+    font-family: "Cinzel", serif;
+}
+
+.imgbox img {
+    width: 0;
+    transition: width 1s ease-in-out;
+}
+
+.br-0 {
+    border-right: 0;
+}
+
+.bl-0 {
+    border-left: 0;
+}
+
+.bt-0 {
+    border-top: 0;
+}
+
+.bb-0 {
+    border-bottom: 0;
+}
+
+.info {
+    font-size: 3vw;
+    color: #39FF14; 
+}
+
+#reset {
+    margin: 0;
+    padding: 1px 18px;
+    background: #39FF14; 
+    border: 2px solid #FF00FF; 
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bolder;
+    color: black; 
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#reset:hover {
+    background: #FF00FF; 
+    color: #39FF14; 
+    box-shadow: 0 0 10px #39FF14, 0 0 30px #39FF14; 
+}
+
+.line {
+    background-color: #39FF14;
+    height: 3px;
+    width: 0vw;
+    position: absolute;
+    transition: width 1s ease-in-out;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #222;
+    border: 2px solid #39FF14;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #39FF14;
+    font-family: "Cinzel", serif;
+    font-size: 30px;
+}
+
+.close {
+    color: #FF00FF;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #FF00FF;
+    text-shadow: 0 0 10px #FF00FF;
+}
+
+.stats{
+    font-size: 2.5vw;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+@media only screen and (max-width: 950px) {
+    .gameContainer {
+        flex-wrap: wrap;
+    }
+
+    .gameInfo {
+        margin-top: 34px;
+    }
+}
+
+.stats button{
+    font-family: 'Poppins', sans-serif;
+}
+
+.winning-box {
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14, 0 0 40px #FF00FF;
+        background-color: #FF00FF;
+        color: #39FF14;
+    }
+    to {
+        box-shadow: 0 0 20px #39FF14, 0 0 30px #39FF14, 0 0 40px #39FF14, 0 0 50px #FF00FF;
+        background-color: #39FF14;
+        color: #FF00FF;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        grid-template-rows: repeat(3, 12vw);
+        grid-template-columns: repeat(3, 12vw);
+    }
+
+    .box {
+        font-size: 10vw;
+    }
+
+    .box:hover {
+        font-size: 14vw;
+    }
+
+    nav {
+        font-size: 24px;
+    }
+
+    .nav-right ul li button {
+        width: 75px;
+        height: 28px;
+        font-size: 18px;
+    }
+
+    .popup-content {
+        width: 90%;
+        font-size: 20px;
+    }
+
+    .gameInfo{
+        display: contents;
+    }
+
+    .gameInfo h1{
+        margin-top: 20px;
+    }
+    .stats{
+        text-align: center;
+        font-size: 3.5vh;
+    }
+    .info{
+        font-size: 5vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-rows: repeat(3, 20vw);
+        grid-template-columns: repeat(3, 20vw);
+    }
+
+    .box {
+        font-size: 16vw;
+    }
+
+    .box:hover {
+        font-size: 20vw;
+    }
+
+    nav {
+        font-size: 18px;
+    }
+
+    .nav-right ul li button {
+        width: 70px;
+        height: 25px;
+        font-size: 16px;
+    }
+
+    .popup-content {
+        width: 90%;
+        font-size: 18px;
+    }
+
+    .popup-content {
+        width: 90%;
+        font-size: 20px;
+    }
+
+    .gameInfo{
+        display: contents;
+    }
+
+    .gameInfo h1{
+        margin-top: 20px;
+    }
+    .stats{
+        text-align: center;
+        font-size: 3.5vh;
+    }
+    .info{
+        font-size: 5vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        grid-template-rows: repeat(3, 25vw);
+        grid-template-columns: repeat(3, 25vw);
+    }
+
+    .box {
+        font-size: 20vw;
+    }
+
+    .box:hover {
+        font-size: 25vw;
+    }
+
+    nav {
+        font-size: 16px;
+    }
+
+    .nav-right ul li button {
+        width: 60px;
+        height: 20px;
+        font-size: 14px;
+    }
+
+    .popup-content {
+        width: 90%;
+        font-size: 16px;
+    }
+
+    .popup-content {
+        width: 90%;
+        font-size: 20px;
+    }
+
+    .gameInfo{
+        display: contents;
+    }
+
+    .gameInfo h1{
+        margin-top: 20px;
+    }
+    .stats{
+        text-align: center;
+        font-size: 3.5vh;
+    }
+    .info{
+        font-size: 5vh;
+    }
+}
